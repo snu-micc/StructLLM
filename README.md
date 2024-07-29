@@ -25,7 +25,7 @@ Follow the codes in the order indicated by the numbered indexing. (`00_Data.py` 
 
 Python code (`.py`) uses python 3.8.13 and requires libraries;
 
-Numpy (version == 1.22.3), PyTorch (version == 1.11.0), and Pymatgen (version == 2022.9.21).
+Numpy (version == 1.22.3), PyTorch (version == 1.11.0), Pymatgen (version == 2022.9.21), and OpenAI (version == 1.30.1)
 
 - `00_Data.py` : Data preprocessing of General inorganic material for training and finetuning.
 - `01_predict_StructGPT-FT_batch.py` : Using fine-tuned StructLLM, predict synthesizability of hold-out-test dataset by OpenAI batch api request.
