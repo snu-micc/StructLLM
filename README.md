@@ -18,7 +18,7 @@ First, download the related data from zenodo (link:   TBD   ) and unzip.
 
 **batch_request** folder : batch data and batch result for OpenAI batch api request
 
-Follow the codes in the order indicated by the numbered indexing. (`00_Data.py` to `07a_batchresult2resultformat_explanation.py`)
+Follow the codes in the order indicated by the numbered indexing. (From `00_Data.py` to `07a_batchresult2resultformat_explanation.py`)
 
 
 # Instructions
