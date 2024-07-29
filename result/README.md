@@ -1,1 +1,1 @@
-Model results
+Model result folder
