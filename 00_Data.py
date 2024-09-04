@@ -8,7 +8,11 @@ import matplotlib.pyplot as plt
 from pymatgen.core import Composition
 
 
-dir = "./data/descriptions_mp30/"
+with open("config.json") as config_file:
+    config = json.load(config_file)
+    mp30_description_path = config["mp30_description_path"]
+
+dir = mp30_description_path
 mp_list = glob.glob(dir+"m*.json")
 
 data = []
@@ -28,6 +32,29 @@ for d in data:
         data_10000.append(d)
 
 
+plt.figure(figsize=(12,8))
+plt.hist(string_length, bins=40, ec='k', color='gray')
+plt.xlabel('String length', fontsize=40, labelpad=15)
+plt.ylabel('Count', fontsize=40, labelpad=15)
+plt.title('MP30 description length', size=35)
+plt.xticks(size=30, rotation=30)
+plt.yticks(size=30)
+plt.xlim([-1000,max(string_length)])
+#plt.ylim([0,1])
+plt.show()
+
+plt.figure(figsize=(12,8))
+plt.hist(string_length, bins=130, ec='k', color='gray')
+plt.xlabel('String length', fontsize=40, labelpad=15)
+plt.ylabel('Count', fontsize=40, labelpad=15)
+plt.title('MP30 description length', size=35)
+plt.xticks(size=30, rotation=30)
+plt.yticks(size=30)
+plt.xlim([0,8579])
+#plt.ylim([0,1])
+plt.show()
+
+
 comp_count_dict = {}
 for dd in data_10000:
     comp = Composition(dd['formula']).reduced_composition
@@ -35,6 +62,23 @@ for dd in data_10000:
         comp_count_dict[comp] = 1
     else:
         comp_count_dict[comp] += 1
+
+
+count_ary = np.array(list(comp_count_dict.values()))
+x_list = [1, 2, 3, 4, 5]
+y_list = [sum(count_ary==1), sum(count_ary==2), sum(count_ary==3), sum(count_ary==4), sum(count_ary>=5)]
+
+plt.figure(figsize=(8,8))
+plt.bar(x_list, y_list, width=0.8, ec='k', color='gray')
+plt.xlabel('Polymorph number', fontsize=40, labelpad=15)
+plt.ylabel('Count', fontsize=40, labelpad=15)
+#plt.title('Polymorph number', size=35)
+plt.xticks(x_list, ['1','2','3','4','>5'], size=30, rotation=0)
+plt.yticks(size=30)
+plt.xlim([0.5,5.5])
+#plt.ylim([0,1])
+plt.show()
+
 
 
 p_count = 0
@@ -76,62 +120,63 @@ with open('./data/mp30s10000_dataset.json', 'w') as f:
     json.dump(mp30s10000_dataset, f)
 
 
+# Load prompt text
+with open("prompts.json") as prompt_file:
+    prompt_dict = json.load(prompt_file)
+    synth_sys_prompt = prompt_dict["synth_sys_prompt"]
+
+
 train_data = []
 val_data = []
 hold_out_data = []
 for i, d in enumerate(train_p):
     request = {}
     request["messages"] = [
-        {"role":"user", "content": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): "+ d["description"]},
+        {"role":"user", "content": synth_sys_prompt+ d["description"]},
         {"role":"assistant", "content": "P"}
     ]
     train_data.append(request)
 
-
 for i, d in enumerate(train_u):
     request = {}
     request["messages"] = [
-        {"role":"user", "content": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): "+ d["description"]},
+        {"role":"user", "content": synth_sys_prompt+ d["description"]},
         {"role":"assistant", "content": "U"}
     ]
     train_data.append(request)
     if i == len(train_p) -1:
         break
 
-
 for i, d in enumerate(val_p):
     request = {}
     request["messages"] = [
-        {"role":"user", "content": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): "+ d["description"]},
+        {"role":"user", "content": synth_sys_prompt+ d["description"]},
         {"role":"assistant", "content": "P"}
     ]
     val_data.append(request)
 
-
 for i, d in enumerate(val_u):
     request = {}
     request["messages"] = [
-        {"role":"user", "content": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): "+ d["description"]},
+        {"role":"user", "content": synth_sys_prompt+ d["description"]},
         {"role":"assistant", "content": "U"}
     ]
     val_data.append(request)
     if i == len(val_p) -1:
         break
 
-
 for i, d in enumerate(hold_out_p):
     request = {}
     request["messages"] = [
-        {"role":"user", "content": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): "+ d["description"]},
+        {"role":"user", "content": synth_sys_prompt+ d["description"]},
         {"role":"assistant", "content": "P"}
     ]
     hold_out_data.append(request)
 
-
 for i, d in enumerate(hold_out_u):
     request = {}
     request["messages"] = [
-        {"role":"user", "content": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): "+ d["description"]},
+        {"role":"user", "content": synth_sys_prompt+ d["description"]},
         {"role":"assistant", "content": "U"}
     ]
     hold_out_data.append(request)
@@ -154,7 +199,5 @@ with open(save_dir+"/val_pu_struct_data.jsonl" , encoding= "utf-8",mode="w") as 
 with open(save_dir+"/hold_out_pu_struct_data.jsonl" , encoding= "utf-8",mode="w") as file:
     for i in hold_out_data:
         file.write(json.dumps(i) + "\n")
-
-
 
 #

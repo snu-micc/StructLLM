@@ -15,7 +15,7 @@ for dd in test_set:
     answer_list.append(dd['messages'][1]['content'])
 
 batch_test = []
-with jsonlines.open("./batch_request/batch_[  TYPE YOUR BATCH RESULT IDENTIFIER  ]_output.jsonl") as f:
+with jsonlines.open("./batch_request/batch_data_struct_4omini_output.jsonl") as f:
     for line in f.iter():
         batch_test.append(line)
 
@@ -24,7 +24,7 @@ prediction_result = []
 for i in range(len(batch_test)):
     d_idx = int(batch_test[i]['custom_id'].split('request-')[-1])-1
     response = batch_test[i]['response']
-
+    #
     pred_result = {}
     pred_result['Model'] = response['body']['model']
     pred_result['Prompt'] = user_prompt_list[d_idx]
@@ -38,5 +38,5 @@ for i in range(len(batch_test)):
     prediction_result.append(pred_result)
 
 
-with open('./result/prediction_StructSynthGPT-FT.json', 'w') as f:
+with open('./result/prediction_StructSynthGPT4om.json', 'w') as f:
     json.dump(prediction_result, f, indent=4)

@@ -1,0 +1,10 @@
+{
+	"synth_sys_prompt": "You are an expert inorganic chemist.  Determine if the following compound is likely to be synthesizable based on its structural description, answering only \"P\" (for positive or possible) and \"U\" (for unknown or unlikely): ",
+	"synth_user_prompt": "Is this inorganic compound synthesizable? : ",
+	"expla_sys_prompt": "Return only output of the following format for each reason, and no other information: ### Reason 1. **[Keyword of reason]**\n [Detailed description] \n",
+	"expla_user_prompt1": "Explain why an inorganic compound with the following structural information is synthesizable: ",
+	"expla_user_prompt2": "Explain why an inorganic compound with the following structural information is not synthesizable: ",
+	"ifthen_prompt": "In one sentence, describe an \"if-then\" rule based on the underlying principle used by this explanation, which could be applied to a new compound: ",
+	"couterrule_prompt": "Rewrite the following sentence so that it would become false: ",
+	"veracity_sys_prompt": "You are provided with a statement of unknown veracity. Return only True or False and nothing else depending on the veracity of the statement."
+}
