@@ -2,7 +2,8 @@
 
 This repository contains the data and code for "**Explainable Structure-based Synthesizability of Inorganic Materials using Large Language Models**"
 
-![image](https://github.com/user-attachments/assets/43ac3839-4e65-4f69-8ee6-6de0ecf23287)
+![image](https://github.com/snu-micc/StructLLM/blob/main/TOC.png)
+
 
 # Developer
 [Seongmin Kim](https://scholar.google.com/citations?user=HXcbuWQAAAAJ&hl=en&oi=ao),  [Joshua Schrier](https://scholar.google.com/citations?user=zJC_7roAAAAJ&hl=en),  and  [Yousung Jung](https://scholar.google.com/citations?user=y8D-JCAAAAAJ&hl=en&oi=ao)
