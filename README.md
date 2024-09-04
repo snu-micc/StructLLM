@@ -25,18 +25,21 @@ Follow the codes in the order indicated by the numbered indexing. (From `00_Data
 
 Python code (`.py`) uses python 3.8.13 and requires libraries;
 
-Numpy (version == 1.22.3), PyTorch (version == 1.11.0), Pymatgen (version == 2022.9.21), and OpenAI (version == 1.30.1)
+Numpy (version == 1.22.3), PyTorch (version == 1.11.0), Pymatgen (version == 2022.9.21), and OpenAI (version == 1.30.1).
+
+For generating structural text description, Robocrystallographer (version == 0.2.8) was used.
 
 - `00_Data.py` : Data preprocessing of General inorganic material for training and finetuning.
-- `01_predict_StructGPT-FT_batch.py` : Using fine-tuned StructLLM, predict synthesizability of hold-out-test dataset by OpenAI batch api request.
-- `01a_batchresult2resultformat.py` : Convert the batch result ('01_predict_StructGPT-FT_batch.py') to data analysis format.
+- `01_predict_StructSynthGPT-FT_batch.py` : Using fine-tuned StructLLM, predict synthesizability of hold-out-test dataset by OpenAI batch api request.
+- `01a_batchresult2resultformat.py` : Convert the batch result ('01_predict_StructSynthGPT-FT_batch.py') to data analysis format.
 - `02_get_metrics.py` : See the result of models for general synthesizability prediction
-- `03_explain_Synthesizability_GPT4o.py` : Using GPT-4o, explain the reasons of general synthesizability by OpenAI batch api request.
-- `03a_batchresult2resultformat_explanation.py` : Convert the batch result ('03_explain_Synthesizability_GPT4o.py') to data analysis format.
-- `04_get_explanation_GPT_embedding.py` : Using gpt text-embedding-large model, get embedding vectors of textual explanations ('03a_batchresult2resultformat_explanation.py').
+- `03_explain_Synthesizability_GPT4o_4om.py` : Using GPT-4o, explain the reasons of general synthesizability by OpenAI batch api request.
+- `03a_batchresult2resultformat_explanation_4om.py` : Convert the batch result ('03_explain_Synthesizability_GPT4o_4om.py') to data analysis format.
+- `04_get_explanation_GPT_embedding_4om.py` : Using gpt text-embedding-large model, get embedding vectors of textual explanations ('03a_batchresult2resultformat_explanation_4om.py').
+- `04a_make_GPTembedding_json_dictionary_4om.py` : Convert the batch result ('04_get_explanation_GPT_embedding_4om.py') to data analysis format.
+- `04b_explanation_analysis_4om.py` : See the explanation result of models for general synthesizability prediction
 - `05_predict_PerovStructGPT-FT-TL_batch.py` : Using fine-tuned perovskite StructLLM, predict synthesizability of hold-out-test perovskite dataset by OpenAI batch api request.
 - `06_get_metrics_perovskite.py` : See the result of models for perovskite synthesizability prediction
-- `07_explain_perov_Synthesizability_GPT4o.py` : Using GPT-4o, explain the reasons of perovskite synthesizability by OpenAI batch api request.
-- `07a_batchresult2resultformat_explanation.py` : Convert the batch result ('07_explain_perov_Synthesizability_GPT4o.py') to data analysis format.
+
 
 
