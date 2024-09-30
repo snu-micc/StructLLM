@@ -30,6 +30,8 @@ Numpy (version == 1.26.4), Pymatgen (version == 2024.3.1), and OpenAI (version =
 
 For generating structural text description, Robocrystallographer (version == 0.2.8) was used.
 
+You can manually install or using `requirements.txt` to use following codes:
+
 - `00_Data.py` : Data preprocessing of General inorganic material for training and finetuning.
 - `01_predict_StructSynthGPT-FT_batch.py` : Using fine-tuned StructLLM, predict synthesizability of hold-out-test dataset by OpenAI batch api request.
 - `01a_batchresult2resultformat.py` : Convert the batch result ('01_predict_StructSynthGPT-FT_batch.py') to data analysis format.
