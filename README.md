@@ -24,9 +24,9 @@ Follow the codes in the order indicated by the numbered indexing. (From `00_Data
 
 # Instructions
 
-Python code (`.py`) uses python 3.8.13 and requires libraries;
+Python code (`.py`) uses python 3.11.8 and requires libraries;
 
-Numpy (version == 1.22.3), PyTorch (version == 1.11.0), Pymatgen (version == 2022.9.21), and OpenAI (version == 1.30.1).
+Numpy (version == 1.26.4), Pymatgen (version == 2024.3.1), and OpenAI (version == 1.30.1).
 
 For generating structural text description, Robocrystallographer (version == 0.2.8) was used.
 
