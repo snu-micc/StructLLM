@@ -49,16 +49,17 @@ You can manually install or using `requirements.txt` to use following codes:
 
 Follow the below steps to use the code and to reproduce this method as it is;
 
-- Get your OpenAI api key. (https://platform.openai.com/)
+- Get your OpenAI api key. (See https://platform.openai.com/)
 - Download MP30_description dataset.
 - Fix `config.json` file. ( Type your OpenAI api key & your downloaded mp30_description folder path )
 - Run `00_Data.py` code. --> `./data/finetuning/train_pu_struct_data.jsonl`, `./data/finetuning/val_pu_struct_data.jsonl`, `./data/finetuning/hold_out_pu_struct_data.jsonl` will be generated.
-- Fine-tuning GPT-4o-mini by using the generated `./data/finetuning/train_pu_struct_data.jsonl`, `./data/finetuning/val_pu_struct_data.jsonl` dataset. (https://platform.openai.com/docs/guides/fine-tuning/)
+- Fine-tuning GPT-4o-mini by using the generated `./data/finetuning/train_pu_struct_data.jsonl`, `./data/finetuning/val_pu_struct_data.jsonl` dataset. (See https://platform.openai.com/docs/guides/fine-tuning/)
 - After finishing the fine-tuning, copy your fine-tuned model identifier and paste it into `01_predict_StructSynthGPT-FT_batch.py` requesting model argument.
 - Run `01_predict_StructSynthGPT-FT_batch.py` code. --> Batch request will be calculated. After batch completed, you can download the output jsonl file.
 - Copy your batch identifier and paste it into `01a_batchresult2resultformat.py` at batch output load part.
 - Run `01a_batchresult2resultformat.py` to convert batch output to readable json file. --> The test result will be saved as `./result/prediction_StructSynthGPT4om.json`.
 
-
+If you want to test another inorganic structures, make the same format to the test dataset (`./data/finetuning/hold_out_pu_struct_data.jsonl`) and run `01_predict_StructSynthGPT-FT_batch.py` code.
+To obtain the structural text from cif file, use Robocrystallographer tool. (See https://hackingmaterials.lbl.gov/robocrystallographer/index.html#)
 
 
