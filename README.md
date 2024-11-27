@@ -45,4 +45,20 @@ You can manually install or using `requirements.txt` to use following codes:
 - `06_get_metrics_perovskite.py` : See the result of models for perovskite synthesizability prediction
 
 
+# Code guideline
+
+Follow the below steps to use the code and to reproduce this method as it is;
+
+- Get your OpenAI api key. (https://platform.openai.com/)
+- Download MP30_description dataset.
+- Fix `config.json` file. ( Type your OpenAI api key & your downloaded mp30_description folder path )
+- Run `00_Data.py` code. --> `./data/finetuning/train_pu_struct_data.jsonl`, `./data/finetuning/val_pu_struct_data.jsonl`, `./data/finetuning/hold_out_pu_struct_data.jsonl` will be generated.
+- Fine-tuning GPT-4o-mini by using the generated `./data/finetuning/train_pu_struct_data.jsonl`, `./data/finetuning/val_pu_struct_data.jsonl` dataset. (https://platform.openai.com/docs/guides/fine-tuning/)
+- After finishing the fine-tuning, copy your fine-tuned model identifier and paste it into `01_predict_StructSynthGPT-FT_batch.py` requesting model argument.
+- Run `01_predict_StructSynthGPT-FT_batch.py` code. --> Batch request will be calculated. After batch completed, you can download the output jsonl file.
+- Copy your batch identifier and paste it into `01a_batchresult2resultformat.py` at batch output load part.
+- Run `01a_batchresult2resultformat.py` to convert batch output to readable json file. --> The test result will be saved as `./result/prediction_StructSynthGPT4om.json`.
+
+
+
 
