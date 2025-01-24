@@ -9,7 +9,7 @@ This repository contains the data and code for "**Explainable Synthesizability P
 [Seongmin Kim](https://scholar.google.com/citations?user=HXcbuWQAAAAJ&hl=en&oi=ao),  [Joshua Schrier](https://scholar.google.com/citations?user=zJC_7roAAAAJ&hl=en),  and  [Yousung Jung](https://scholar.google.com/citations?user=y8D-JCAAAAAJ&hl=en&oi=ao)
 
 # Organization
-First, download the related data from zenodo (link:   TBD   ) and unzip.
+First, download the related data from zenodo (link: https://zenodo.org/records/14729225 ) and unzip.
 
 **data** folder : general inorganic material data
 
