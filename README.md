@@ -1,6 +1,6 @@
 # StructLLM
 
-This repository contains the data and code for "**Explainable Structure-based Synthesizability of Inorganic Materials using Large Language Models**"
+This repository contains the data and code for "**Explainable Synthesizability Prediction of Inorganic Crystal Polymorphs using Large Language Models**"
 
 ![image](https://github.com/snu-micc/StructLLM/blob/main/TOC.png)
 
