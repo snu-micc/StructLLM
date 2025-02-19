@@ -62,4 +62,6 @@ Follow the below steps to use the code and to reproduce this method as it is;
 If you want to test another inorganic structures, make the same format to the test dataset (`./data/finetuning/hold_out_pu_struct_data.jsonl`) and run `01_predict_StructSynthGPT-FT_batch.py` code.
 To obtain the structural text from cif file, use Robocrystallographer tool. (See https://hackingmaterials.lbl.gov/robocrystallographer/index.html#)
 
+# Cite
+A publication appears on the [Angewandte Chemie International Edition](https://onlinelibrary.wiley.com/doi/abs/10.1002/anie.202423950) as `doi:10.1002/anie.202423950`  
 
